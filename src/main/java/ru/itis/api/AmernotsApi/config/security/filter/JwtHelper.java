@@ -1,11 +1,9 @@
 package ru.itis.api.AmernotsApi.config.security.filter;
 
 import io.jsonwebtoken.*;
-import lombok.extern.java.Log;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
-import ru.itis.api.AmernotsApi.model.User;
 
 import java.sql.Date;
 import java.time.Instant;
