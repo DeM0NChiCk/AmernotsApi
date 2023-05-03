@@ -21,7 +21,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and()
                 .authorizeRequests()
-                .antMatchers("/auth/**").permitAll()
+                .antMatchers("/amernots_api/auth/**").permitAll()
+                .antMatchers("/amernots_api/test").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .addFilterBefore(authFilter, BasicAuthenticationFilter.class);

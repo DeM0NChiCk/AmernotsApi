@@ -16,9 +16,10 @@ public class JwtHelper {
     @Value("${jwt.secret}")
     private String jwtSecret;
 
-    public String generateToken(User user) {
+    public String generateToken(JwtClaims jwtClaims) {
         Claims claims = Jwts.claims();
-        claims.put("id", user.getId());
+        claims.put("id", jwtClaims.getId());
+        claims.put("password", jwtClaims.getPassword());
         return Jwts.builder()
                 .setClaims(claims)
                 .signWith(SignatureAlgorithm.HS512, jwtSecret)
@@ -44,8 +45,11 @@ public class JwtHelper {
         return false;
     }
 
-    public String getIdFromToken(String token) {
+    public JwtClaims getDataFromToken(String token) {
         Claims claims = Jwts.parser().setSigningKey(jwtSecret).parseClaimsJws(token).getBody();
-        return (String) claims.get("id");
+        return JwtClaims.builder()
+                .id((Long) claims.get("id"))
+                .password((String) claims.get("password"))
+                .build();
     }
 }

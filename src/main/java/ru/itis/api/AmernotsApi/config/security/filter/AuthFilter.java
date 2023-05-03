@@ -47,10 +47,14 @@ public class AuthFilter extends GenericFilterBean {
             return;
         }
 
-        String id = jwtHelper.getIdFromToken(token);
-        Optional<User> optionalUser = usersRepository.findById(Long.parseLong(id));
+        JwtClaims jwtClaims = jwtHelper.getDataFromToken(token);
+        Optional<User> optionalUser = usersRepository.findById(jwtClaims.getId());
         if (optionalUser.isPresent()) {
             User user = optionalUser.get();
+            if (!user.getPassword().equals(jwtClaims.getPassword())) {
+                filterChain.doFilter(servletRequest, servletResponse);
+                return;
+            }
             Collection<GrantedAuthority> authorities = Collections.singleton(Role.ROLE_USER);
             Authentication auth = new UsernamePasswordAuthenticationToken(user, null, authorities);
             SecurityContextHolder.getContext().setAuthentication(auth);

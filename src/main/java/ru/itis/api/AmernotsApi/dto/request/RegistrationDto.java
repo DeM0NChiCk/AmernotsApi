@@ -12,4 +12,6 @@ import lombok.NoArgsConstructor;
 public class RegistrationDto {
     private String login;
     private String password;
+    private String username;
+    private Integer userStatus;
 }
