@@ -31,6 +31,7 @@ public class AuthService {
                 .password(createdUser.getPassword())
                 .build();
 
+
         return TokenDto.builder()
                 .token(jwtHelper.generateToken(jwtClaims))
                 .build();

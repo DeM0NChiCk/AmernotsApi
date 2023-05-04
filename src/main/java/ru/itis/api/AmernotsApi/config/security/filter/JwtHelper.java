@@ -46,7 +46,7 @@ public class JwtHelper {
     public JwtClaims getDataFromToken(String token) {
         Claims claims = Jwts.parser().setSigningKey(jwtSecret).parseClaimsJws(token).getBody();
         return JwtClaims.builder()
-                .id((Long) claims.get("id"))
+                .id(Long.valueOf((Integer) claims.get("id")))
                 .password((String) claims.get("password"))
                 .build();
     }
