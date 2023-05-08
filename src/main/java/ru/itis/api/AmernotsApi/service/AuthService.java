@@ -42,11 +42,13 @@ public class AuthService {
     }
 
     public Object signIn(SignInDto form) {
-        Optional<User> optionalUser = userRepository.findByLogin(form.getLogin());
-        if (optionalUser.isPresent()){
+        Optional<User> optionalUserLogin = userRepository.findByLogin(form.getLogin());
+
+        if (optionalUserLogin.isPresent() && passwordEncoder.matches(form.getPassword(), optionalUserLogin.get().getPassword())) {
+            System.out.println("PasswordResponse" + passwordEncoder.encode(form.getPassword()));
             JwtClaims jwtClaims = JwtClaims.builder()
-                    .id(optionalUser.get().getUserId())
-                    .password(optionalUser.get().getPassword())
+                    .id(optionalUserLogin.get().getUserId())
+                    .password(optionalUserLogin.get().getPassword())
                     .build();
             return TokenDto.builder()
                     .token(jwtHelper.generateToken(jwtClaims))
