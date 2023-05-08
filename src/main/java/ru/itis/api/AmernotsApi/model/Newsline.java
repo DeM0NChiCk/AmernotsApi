@@ -2,8 +2,7 @@ package ru.itis.api.AmernotsApi.model;
 
 import lombok.*;
 
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Builder
 @Entity
@@ -11,8 +10,10 @@ import javax.persistence.Table;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "newslines")
-public class Newsline extends AbstractEntity{
+public class Newsline{
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long newslineId;
     private String tittleSituation;
     private String description;
     private String address;
@@ -23,5 +24,4 @@ public class Newsline extends AbstractEntity{
     private Boolean codeFireService;
     private Boolean codeAmbulance;
     private Boolean codePolice;
-
 }

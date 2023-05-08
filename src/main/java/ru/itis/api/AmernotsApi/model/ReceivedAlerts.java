@@ -2,8 +2,7 @@ package ru.itis.api.AmernotsApi.model;
 
 import lombok.*;
 
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Builder
 @NoArgsConstructor
@@ -11,8 +10,10 @@ import javax.persistence.Table;
 @Entity
 @Getter
 @Setter
-@Table(name = "received_alerts")
-public class ReceivedAlerts extends AbstractEntity{
+public class ReceivedAlerts {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long receivedAlertsId;
     private Long idUser;
-    private Long[] idNewsline;
+    private Long idNewsline;
 }

@@ -16,7 +16,7 @@ public class ProfileService {
                 .login(profile.getLogin())
                 .username(profile.getUsername())
                 .userStatus(profile.getUserStatus())
-                .id(profile.getId())
+                .id(profile.getUserId())
                 .build();
     }
 }
