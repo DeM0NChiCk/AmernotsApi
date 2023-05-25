@@ -10,18 +10,18 @@ import javax.persistence.*;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Newsline{
+public class News {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long newslineId;
     private String tittleSituation;
     private String description;
     private String address;
-    private String timePublic;
-    private Boolean newslineStatus;
+    private String timeRelease;
     private Integer urgencyCode;
     private String photo;
-    private Boolean codeFireService;
-    private Boolean codeAmbulance;
-    private Boolean codePolice;
+    @Enumerated(EnumType.STRING)
+    private RoleNews roleNews;
+    private Long authorId;
+    private Long employeeId;
 }

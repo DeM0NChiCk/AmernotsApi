@@ -5,9 +5,8 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import ru.itis.api.AmernotsApi.config.security.filter.JwtClaims;
 import ru.itis.api.AmernotsApi.config.security.filter.JwtHelper;
-import ru.itis.api.AmernotsApi.dto.request.RegistrationDto;
+import ru.itis.api.AmernotsApi.dto.request.SignUpDto;
 import ru.itis.api.AmernotsApi.dto.request.SignInDto;
-import ru.itis.api.AmernotsApi.dto.response.ErrorDto;
 import ru.itis.api.AmernotsApi.dto.response.TokenDto;
 import ru.itis.api.AmernotsApi.model.User;
 import ru.itis.api.AmernotsApi.repository.UserRepository;
@@ -21,7 +20,7 @@ public class AuthService {
     private final PasswordEncoder passwordEncoder;
     private final JwtHelper jwtHelper;
 
-    public TokenDto signUp(RegistrationDto form) {
+    public TokenDto signUp(SignUpDto form) {
         User newUser = User.builder()
                 .login(form.getLogin())
                 .password(passwordEncoder.encode(form.getPassword()))
@@ -41,8 +40,10 @@ public class AuthService {
                 .build();
     }
 
-    public Object signIn(SignInDto form) {
+    public TokenDto signIn(SignInDto form) {
         Optional<User> optionalUserLogin = userRepository.findByLogin(form.getLogin());
+
+        TokenDto tokenDto = null;
 
         if (optionalUserLogin.isPresent() && passwordEncoder.matches(form.getPassword(), optionalUserLogin.get().getPassword())) {
             System.out.println("PasswordResponse" + passwordEncoder.encode(form.getPassword()));
@@ -50,13 +51,10 @@ public class AuthService {
                     .id(optionalUserLogin.get().getUserId())
                     .password(optionalUserLogin.get().getPassword())
                     .build();
-            return TokenDto.builder()
+            tokenDto = TokenDto.builder()
                     .token(jwtHelper.generateToken(jwtClaims))
                     .build();
-        } else {
-            return ErrorDto.builder()
-                    .message("Пользователь не существует")
-                    .build();
         }
+        return tokenDto;
     }
 }

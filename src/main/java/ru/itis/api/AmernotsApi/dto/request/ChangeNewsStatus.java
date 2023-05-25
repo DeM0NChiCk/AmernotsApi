@@ -1,4 +1,4 @@
-package ru.itis.api.AmernotsApi.dto.response;
+package ru.itis.api.AmernotsApi.dto.request;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -6,9 +6,9 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
-@Builder
-@NoArgsConstructor
 @AllArgsConstructor
-public class ErrorDto {
-    private String message;
+@NoArgsConstructor
+@Builder
+public class ChangeNewsStatus {
+    private Long newsId;
 }

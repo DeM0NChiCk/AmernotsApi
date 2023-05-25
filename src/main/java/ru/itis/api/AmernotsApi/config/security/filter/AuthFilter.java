@@ -55,7 +55,7 @@ public class AuthFilter extends GenericFilterBean {
                 filterChain.doFilter(servletRequest, servletResponse);
                 return;
             }
-            Collection<GrantedAuthority> authorities = Collections.singleton(Role.ROLE_USER);
+            Collection<GrantedAuthority> authorities = Collections.singleton(user.getUserStatus());
             Authentication auth = new UsernamePasswordAuthenticationToken(user, null, authorities);
             SecurityContextHolder.getContext().setAuthentication(auth);
         }
