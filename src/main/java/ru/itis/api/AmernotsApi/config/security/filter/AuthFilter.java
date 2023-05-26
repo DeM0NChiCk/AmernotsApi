@@ -8,7 +8,6 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.GenericFilterBean;
-import ru.itis.api.AmernotsApi.model.Role;
 import ru.itis.api.AmernotsApi.model.User;
 import ru.itis.api.AmernotsApi.repository.UserRepository;
 
@@ -55,7 +54,7 @@ public class AuthFilter extends GenericFilterBean {
                 filterChain.doFilter(servletRequest, servletResponse);
                 return;
             }
-            Collection<GrantedAuthority> authorities = Collections.singleton(Role.ROLE_USER);
+            Collection<GrantedAuthority> authorities = Collections.singleton(user.getUserStatus());
             Authentication auth = new UsernamePasswordAuthenticationToken(user, null, authorities);
             SecurityContextHolder.getContext().setAuthentication(auth);
         }
