@@ -5,7 +5,6 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-import ru.itis.api.AmernotsApi.config.security.filter.JwtHelper;
 import ru.itis.api.AmernotsApi.dto.request.ChangePasswordDto;
 import ru.itis.api.AmernotsApi.dto.response.MessageDto;
 import ru.itis.api.AmernotsApi.model.News;
