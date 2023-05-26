@@ -3,6 +3,7 @@ package ru.itis.api.AmernotsApi.model;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Builder
 @NoArgsConstructor
@@ -19,5 +20,7 @@ public class User {
     @Column(unique = true)
     private String login;
     private String password;
-    private Integer userStatus;
+    @Enumerated(EnumType.STRING)
+    private Role userStatus;
+
 }
