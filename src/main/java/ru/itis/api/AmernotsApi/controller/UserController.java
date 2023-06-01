@@ -28,8 +28,8 @@ public class UserController {
     }
 
     @GetMapping("/news")
-    public NewsDto getNews(@RequestParam(name = "news_id") Long newsId) {
-        return newsService.getNewsById(newsId);
+    public NewsDto getNews(@RequestParam(name = "news_id") String newsId) {
+        return newsService.getNewsById(Long.valueOf(newsId));
     }
 
 }
