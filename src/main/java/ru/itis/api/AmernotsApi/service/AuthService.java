@@ -56,8 +56,5 @@ public class AuthService {
                     .build();
         }
         return tokenDto;
-
-        // код статутс не изменяется
-        // TODO: научится делать правильный Exception Handler
     }
 }

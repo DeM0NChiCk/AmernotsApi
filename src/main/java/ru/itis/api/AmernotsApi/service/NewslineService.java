@@ -50,19 +50,23 @@ public class NewslineService {
         if (optionalUserLogin.isPresent()) {
             if (optionalUserLogin.get().getUserStatus() == Role.ROLE_USER) {
                 result = NewslineDto.builder()
-                        .newslist(newslineUser)
+                        .userStatus(profile.getUserStatus())
+                        .newsline(newslineUser)
                         .build();
             } else if (optionalUserLogin.get().getUserStatus() == Role.ROLE_FIRE_DEPARTMENT) {
                 result =  NewslineDto.builder()
-                        .newslist(newslineFDepartment)
+                        .userStatus(profile.getUserStatus())
+                        .newsline(newslineFDepartment)
                         .build();
             } else if (optionalUserLogin.get().getUserStatus() == Role.ROLE_AMBULANCE) {
                 result = NewslineDto.builder()
-                        .newslist(newslineAmbulance)
+                        .userStatus(profile.getUserStatus())
+                        .newsline(newslineAmbulance)
                         .build();
             } else if (optionalUserLogin.get().getUserStatus() == Role.ROLE_POLICE) {
                 result =  NewslineDto.builder()
-                        .newslist(newslinePolice)
+                        .userStatus(profile.getUserStatus())
+                        .newsline(newslinePolice)
                         .build();
             }
         }

@@ -5,6 +5,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import ru.itis.api.AmernotsApi.model.News;
+import ru.itis.api.AmernotsApi.model.Role;
 
 import java.util.List;
 
@@ -13,5 +14,6 @@ import java.util.List;
 @NoArgsConstructor
 @Builder
 public class NewslineDto {
-    private List<News> newslist;
+    private Role userStatus;
+    private List<News> newsline;
 }
