@@ -93,7 +93,7 @@ public class NewslineService {
                 .employeeId(valueEmployeeId)
                 .build();
 
-        News createdNews = newsRepository.save(newNews);
+        newsRepository.save(newNews);
 
         return MessageDto.builder()
                 .message("Successfully")

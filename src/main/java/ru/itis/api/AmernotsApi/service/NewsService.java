@@ -5,7 +5,6 @@ import org.springframework.stereotype.Service;
 import ru.itis.api.AmernotsApi.dto.response.NewsDto;
 import ru.itis.api.AmernotsApi.model.News;
 import ru.itis.api.AmernotsApi.repository.NewsRepository;
-import ru.itis.api.AmernotsApi.repository.UserRepository;
 
 import java.util.Optional;
 
