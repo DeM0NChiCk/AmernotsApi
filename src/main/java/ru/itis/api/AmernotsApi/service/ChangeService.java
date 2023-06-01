@@ -23,16 +23,16 @@ public class ChangeService {
     private final PasswordEncoder passwordEncoder;
 
     @Transactional
-    public MessageDto ChangeNewsStatus(Long changeNewsStatus) {
+    public MessageDto ChangeNewsStatus(Long newsId) {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         User profile = (User) authentication.getPrincipal();
         Optional<User> optionalUserLogin = userRepository.findByLogin(profile.getLogin());
 
-        Optional<News> optionalNews = newsRepository.findById(changeNewsStatus);
+        Optional<News> optionalNews = newsRepository.findById(newsId);
 
         if (optionalUserLogin.isPresent() && optionalNews.isPresent()) {
             if (optionalNews.get().getEmployeeId() == -1L) {
-                newsRepository.updateEmployeeId(optionalUserLogin.get().getUserId(), changeNewsStatus);
+                newsRepository.updateEmployeeId(optionalUserLogin.get().getUserId(), newsId);
 
                 return MessageDto.builder()
                         .message("Successfully")

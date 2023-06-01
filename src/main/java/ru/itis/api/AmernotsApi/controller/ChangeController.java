@@ -18,7 +18,7 @@ public class ChangeController {
     }
 
     @PatchMapping("/news_status")
-    public MessageDto changeNewsStatus(@RequestParam(name = "news_id") String newsId) {
-        return changeService.ChangeNewsStatus(Long.valueOf(newsId));
+    public MessageDto changeNewsStatus(@RequestParam(name = "news_id") Long newsId) {
+        return changeService.ChangeNewsStatus(newsId);
     }
 }
