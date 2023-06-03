@@ -16,7 +16,6 @@ public class AddNewsDto {
     private String address;
     private String timeRelease;
     private Integer urgencyCode;
-    private String photo;
     private RoleNews roleNews;
     private Long authorId;
 }

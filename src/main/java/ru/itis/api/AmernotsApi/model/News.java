@@ -19,7 +19,6 @@ public class News {
     private String address;
     private String timeRelease;
     private Integer urgencyCode;
-    private String photo;
     @Enumerated(EnumType.STRING)
     private RoleNews roleNews;
     private Long authorId;

@@ -32,7 +32,6 @@ public class NewsService {
                     .address(optionalNews.get().getAddress())
                     .roleNews(optionalNews.get().getRoleNews())
                     .urgencyCode(optionalNews.get().getUrgencyCode())
-                    .photo(optionalNews.get().getPhoto())
                     .timeRelease(optionalNews.get().getTimeRelease())
                     .employeeId(optionalNews.get().getEmployeeId())
                     .build();

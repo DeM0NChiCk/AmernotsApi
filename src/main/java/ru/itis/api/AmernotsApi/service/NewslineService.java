@@ -87,7 +87,6 @@ public class NewslineService {
                 .address(form.getAddress())
                 .timeRelease(form.getTimeRelease())
                 .urgencyCode(form.getUrgencyCode())
-                .photo(form.getPhoto())
                 .roleNews(form.getRoleNews())
                 .authorId(profile.getUserId())
                 .employeeId(valueEmployeeId)
