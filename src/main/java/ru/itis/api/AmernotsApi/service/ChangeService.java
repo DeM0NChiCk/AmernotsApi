@@ -32,7 +32,7 @@ public class ChangeService {
 
         if (optionalUserLogin.isPresent() && optionalNews.isPresent()) {
             if (optionalNews.get().getEmployeeId() == -1L) {
-                newsRepository.updateEmployeeId(optionalUserLogin.get().getUserId(), newsId);
+                newsRepository.updateEmployeeId(newsId, optionalUserLogin.get().getUserId());
 
                 return MessageDto.builder()
                         .message("Successfully")

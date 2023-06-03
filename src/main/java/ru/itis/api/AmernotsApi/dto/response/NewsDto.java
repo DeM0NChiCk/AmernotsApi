@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import ru.itis.api.AmernotsApi.model.Role;
 import ru.itis.api.AmernotsApi.model.RoleNews;
 
 @Data
@@ -11,6 +12,7 @@ import ru.itis.api.AmernotsApi.model.RoleNews;
 @NoArgsConstructor
 @AllArgsConstructor
 public class NewsDto {
+    private Role userStatus;
     private String tittleSituation;
     private String description;
     private String address;
